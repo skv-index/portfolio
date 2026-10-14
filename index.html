@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vignesh S K — Aspiring Full-Stack Developer & AI Enthusiast</title>
+<meta name="description" content="Portfolio of Vignesh S K: building useful applications, exploring AI, solving real-world problems." />
+<link rel="icon" href="data:," />
+<style>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color: #16213a; background: #f4f7ff; }
+  .page { max-width: 1450px; margin: 0 auto; padding: 0 34px; position: relative; }
+  /* Nav */
+  .nav { display: flex; align-items: center; gap: 24px; padding: 18px 8px; position: sticky; top: 0; z-index: 50; transition: background 0.25s; }
+  .nav.scrolled { background: rgba(244,247,255,0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .logo { font-size: 22px; font-weight: 800; color: #16213a; text-decoration: none; }
+  .nav-links { display: flex; gap: 10px; margin: 0 auto; background: rgba(255,255,255,0.6); border: 1px solid #e2e8f5; padding: 6px; border-radius: 999px; }
+  .nav-links a { text-decoration: none; font-size: 14px; color: #5a6577; padding: 8px 18px; border-radius: 999px; }
+  .nav-links a.active, .nav-links a:hover { background: #fff; color: #16213a; font-weight: 700; box-shadow: 0 2px 8px rgba(22,33,58,0.08); }
+  .btn-contact { position: relative; background: #16213a; color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 999px; }
+  /* Hero stage */
+  .stage { position: relative; text-align: center; padding: 10px 0 60px; overflow: hidden; }
+  .giant { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font-size: clamp(6rem, 18vw, 17rem); font-weight: 900; letter-spacing: 0.02em; color: transparent; -webkit-text-stroke: 2px #c3d4fb; opacity: 0.55; white-space: nowrap; user-select: none; pointer-events: none; line-height: 1; }
+  .sk-mark { position: absolute; z-index: 1; right: 70px; top: 52%; font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 900; letter-spacing: 0.04em; color: transparent; -webkit-text-stroke: 2px #c3d4fb; opacity: 0.6; user-select: none; pointer-events: none; line-height: 1; }
+  /* About */
+  .about { padding: 100px 0 110px; border-top: 1px solid #e2e8f5; }
+  .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #2563eb; background: #dbe7ff; border-radius: 999px; padding: 8px 18px; }
+  .about h2 { margin-top: 20px; font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; letter-spacing: -0.01em; }
+  .about .more { display: inline-block; margin-top: 26px; font-size: 15px; font-weight: 700; color: #2563eb; text-decoration: none; }
+  .about .more:hover { text-decoration: underline; }
+  .about-text p { font-size: 16.5px; line-height: 1.75; color: #4a5568; }
+  .about-text p + p { margin-top: 18px; }
+  .about-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .chip { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #e2e8f5; border-radius: 999px; padding: 10px 20px 10px 10px; font-size: 14px; font-weight: 700; box-shadow: 0 8px 20px rgba(37,99,235,0.08); }
+  .chip .ic { width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; }
+  @media (max-width: 1080px) {
+    .about { padding: 70px 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+  /* Projects */
+  .projects { padding: 90px 0 110px; border-top: 1px solid #e2e8f5; }
+  .proj-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
+  .proj-head h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); letter-spacing: -0.01em; }
+  .proj-nav { display: flex; gap: 10px; }
+  .proj-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid #e2e8f5; background: #fff; color: #16213a; font-size: 20px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+  .proj-nav button:hover { background: #2563eb; border-color: #2563eb; color: #fff; }
+  .proj-row { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 18px; scrollbar-width: thin; }
+  .pcard { flex: 0 0 min(320px, 82vw); scroll-snap-align: start; background: #fff; border: 1px solid #e2e8f5; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
+  .pcard:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(37,99,235,0.14); }
+  .pvisual { position: relative; height: 168px; display: flex; align-items: center; justify-content: center; }
+  .pvisual .big { font-size: 64px; font-weight: 900; color: rgba(255,255,255,0.9); }
+  .pvisual .stars { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.92); border-radius: 999px; font-size: 12px; font-weight: 800; padding: 5px 12px; color: #16213a; }
+  .pvisual .go { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(22,33,58,0.75); color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; }
+  .pcard:hover .go { opacity: 1; }
+  .pbody { padding: 14px 16px 16px; }
+  .pbody h3 { font-size: 16.5px; }
+  .pmeta { margin-top: 8px; font-size: 13px; color: #5a6577; display: flex; align-items: center; gap: 7px; }
+  .pmeta .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .pcard.more { background: #16213a; color: #fff; border-color: #16213a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 280px; font-size: 18px; font-weight: 800; }
+  .pcard.more span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.7); }
+  .pcard.more .arr { width: 52px; height: 52px; border-radius: 50%; background: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  /* Blogs (reuses project slider styles) */
+  .mbtn { width: 44px; height: 44px; border-radius: 50%; background: #16213a; color: #fff; font-weight: 900; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+  .mbtn:hover { background: #2563eb; }
+  .pcover { position: relative; height: 168px; background-size: cover; background-position: center; background-color: #dbe7ff; }
+  .pcover .cat { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.92); border-radius: 999px; font-size: 12px; font-weight: 800; padding: 5px 12px; color: #16213a; }
+  .pcover .go { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(22,33,58,0.75); color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; }
+  .pcard:hover .go { opacity: 1; }
+  /* Contact footer */
+  .contact { background: #16213a; color: #fff; border-radius: 28px 28px 0 0; padding: 84px 32px 30px; text-align: center; margin-top: 30px; }
+  .contact .eyebrow { background: rgba(255,255,255,0.1); color: #9db9ff; }
+  .contact h2 { margin-top: 20px; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.01em; }
+  .contact .csub { margin: 14px auto 0; max-width: 520px; color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.65; }
+  .cbtns { margin-top: 30px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-light { background: #fff; color: #16213a; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; padding: 15px 34px; border-radius: 999px; }
+  .btn-light:hover { background: #dbe7ff; }
+  .btn-line { border: 1px solid rgba(255,255,255,0.35); color: #fff; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; padding: 15px 34px; border-radius: 999px; }
+  .btn-line:hover { border-color: #fff; }
+  .ctouch { margin: 36px auto 0; max-width: 640px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .ctouch a { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: #fff; font-size: 14px; font-weight: 600; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 10px 18px; }
+  .ctouch a:hover { background: #2563eb; border-color: #2563eb; }
+  .ctouch .ic { width: 26px; height: 26px; border-radius: 50%; background: #2563eb; font-size: 12px; font-weight: 900; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .copy { margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; color: rgba(255,255,255,0.5); }
+  .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(#dbe6fb 1px, transparent 1px), linear-gradient(90deg, #dbe6fb 1px, transparent 1px); background-size: 72px 72px; opacity: 0.35; pointer-events: none; }
+  .photo { position: relative; z-index: 2; height: min(840px, 94vh); max-width: none; width: auto; object-fit: contain; margin-top: 0; }
+  /* Side cards */
+  .side-card { position: absolute; z-index: 3; background: #dbe7ff; border-radius: 14px; padding: 22px; width: 250px; text-align: left; box-shadow: 0 14px 34px rgba(37,99,235,0.14); }
+  .side-card h3 { font-size: 17px; line-height: 1.4; }
+  .side-card p { font-size: 13px; color: #5a6577; margin-top: 8px; line-height: 1.55; }
+  .card-left { left: 0; top: 300px; }
+  .card-right { right: 0; top: 120px; }
+  .stat { margin-top: 12px; font-size: 13px; font-weight: 800; color: #16213a; }
+  .stat small { display: block; font-weight: 400; color: #5a6577; font-size: 12px; }
+  .btn-call { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; background: #16213a; color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 999px; }
+  .btn-call .play { width: 22px; height: 22px; border-radius: 50%; background: #2563eb; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
+  /* Caption + socials */
+  .right-stack { position: absolute; z-index: 3; right: 40px; bottom: 40px; width: 250px; display: flex; flex-direction: column; gap: 20px; }
+  /* Fit hero in one viewport on desktop — page scrolls to sections below */
+  @media (min-width: 1081px) {
+    html { scroll-behavior: smooth; }
+    .nav { padding: 14px 0; flex: none; }
+    .stage { flex: none; height: calc(100vh - 78px); padding: 0; }
+    .photo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 100%; margin: 0; }
+    .giant { top: 10px; }
+    .card-left { top: 32%; }
+    .card-right { top: 4%; }
+    .right-stack { bottom: 18px; }
+    .sk-mark { top: 48%; }
+  }
+  .caption { text-align: left; font-size: 16px; font-weight: 600; }
+  @media (max-width: 1080px) {
+    .side-card, .right-stack { position: static; width: 100%; margin: 16px auto; max-width: 420px; text-align: center; }
+    .nav-links { display: none; }
+    .giant { font-size: 24vw; }
+    .sk-mark { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <a class="logo" href="#">SKV</a>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn-contact" href="#contact">Contact Me</a>
+  </nav>
+
+  <section class="stage">
+    <div class="grid-bg"></div>
+    <div class="giant">Vignesh</div>
+    <div class="sk-mark">S K</div>
+    <img class="photo" src="me-Photoroom2.png" alt="Vignesh S K" onerror="this.style.display='none'" />
+
+    <div class="side-card card-left">
+      <h3>Let&rsquo;s Build Something Great.</h3>
+      <p>Open to internships &amp; collaboration — free intro call.</p>
+      <a class="btn-call" href="#contact">Say Hello <span class="play">▶</span></a>
+    </div>
+
+    <div class="side-card card-right">
+      <p style="margin-top:0">I turn ideas into useful apps with modern web tech &amp; AI.</p>
+      <div class="stat">10+ <small>Projects built and counting</small></div>
+    </div>
+
+    <div class="right-stack">
+      <div class="caption">— An aspiring Full-Stack Developer &amp; AI Enthusiast.</div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">About Me</span>
+        <h2>Student by status.<br />Developer by habit.</h2>
+        <a class="more" href="#projects">View Projects ↓</a>
+      </div>
+      <div class="about-text">
+        <p>I&rsquo;m a passionate college student and aspiring full-stack developer interested in Artificial Intelligence, web development, and innovative technology. I enjoy transforming ideas into practical projects, exploring emerging tools, and solving real-world problems through code.</p>
+        <p>I&rsquo;m constantly learning, experimenting, and building my skills to create meaningful digital experiences and grow as a developer.</p>
+        <div class="about-chips">
+          <span class="chip"><span class="ic" style="background:#d1fae5">🎓</span>College Student</span>
+          <span class="chip"><span class="ic" style="background:#fef3c7">💡</span>Full-Stack + AI</span>
+          <span class="chip"><span class="ic" style="background:#ffe4e6">🚀</span>Open to Internships</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="proj-head">
+      <h2>Featured Projects</h2>
+      <div class="proj-nav">
+        <button id="projPrev" aria-label="Scroll projects left">‹</button>
+        <button id="projNext" aria-label="Scroll projects right">›</button>
+      </div>
+    </div>
+    <div class="proj-row" id="projRow">
+      <a class="pcard" href="https://github.com/skv-index/Skillup" target="_blank" rel="noopener">
+        <div class="pvisual" style="background:linear-gradient(135deg,#3178c6,#5b5bd6)"><span class="stars">★ 1</span><span class="big">S</span><span class="go">↗</span></div>
+        <div class="pbody"><h3>Skillup</h3><div class="pmeta"><span class="dot" style="background:#3178c6"></span>TypeScript</div></div>
+      </a>
+      <a class="pcard" href="https://github.com/skv-index/mental-math" target="_blank" rel="noopener">
+        <div class="pvisual" style="background:linear-gradient(135deg,#0ea5e9,#2563eb)"><span class="stars">★ 1</span><span class="big">M</span><span class="go">↗</span></div>
+        <div class="pbody"><h3>mental math</h3><div class="pmeta"><span class="dot" style="background:#3178c6"></span>TypeScript</div></div>
+      </a>
+      <a class="pcard" href="https://github.com/skv-index/Spam_deductor" target="_blank" rel="noopener">
+        <div class="pvisual" style="background:linear-gradient(135deg,#3572A5,#0ea5e9)"><span class="stars">★ 1</span><span class="big">S</span><span class="go">↗</span></div>
+        <div class="pbody"><h3>Spam deductor</h3><div class="pmeta"><span class="dot" style="background:#3572A5"></span>Python</div></div>
+      </a>
+      <a class="pcard more" href="https://github.com/skv-index" target="_blank" rel="noopener">
+        <span class="arr">→</span>
+        More on GitHub
+        <span>See all repositories</span>
+      </a>
+    </div>
+  </section>
+<script>
+(function () {
+  var row = document.getElementById('projRow');
+  document.getElementById('projPrev').addEventListener('click', function () { row.scrollBy({ left: -340, behavior: 'smooth' }); });
+  document.getElementById('projNext').addEventListener('click', function () { row.scrollBy({ left: 340, behavior: 'smooth' }); });
+
+  var LANG_COLORS = { TypeScript: '#3178c6', JavaScript: '#f1e05a', Python: '#3572A5', HTML: '#e34c26', CSS: '#563d7c', Java: '#b07219' };
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function pretty(name) { return name.replace(/[-_]+/g, ' '); }
+  function grad(lang) {
+    var c = LANG_COLORS[lang] || '#5b5bd6';
+    return 'background:linear-gradient(135deg,' + c + ',#16213a)';
+  }
+
+  fetch('https://api.github.com/users/skv-index/repos?sort=updated&per_page=100')
+    .then(function (r) { if (!r.ok) throw new Error('gh ' + r.status); return r.json(); })
+    .then(function (repos) {
+      repos = repos.filter(function (x) { return !x.fork; })
+        .sort(function (a, b) { return (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)); })
+        .slice(0, 6);
+      if (!repos.length) return;
+      var html = repos.map(function (r) {
+        var lang = r.language || 'Code';
+        var dot = LANG_COLORS[lang] || '#5b5bd6';
+        var when = new Date(r.pushed_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return '<a class="pcard" href="' + esc(r.html_url) + '" target="_blank" rel="noopener">' +
+          '<div class="pvisual" style="' + grad(r.language) + '"><span class="stars">★ ' + r.stargazers_count + '</span>' +
+          '<span class="big">' + esc(r.name.charAt(0).toUpperCase()) + '</span><span class="go">↗</span></div>' +
+          '<div class="pbody"><h3>' + esc(pretty(r.name)) + '</h3>' +
+          '<div class="pmeta"><span class="dot" style="background:' + dot + '"></span>' + esc(lang) + ' · Updated ' + esc(when) + '</div></div></a>';
+      }).join('');
+      html += '<a class="pcard more" href="https://github.com/skv-index" target="_blank" rel="noopener">' +
+        '<span class="arr">→</span>More on GitHub<span>See all repositories</span></a>';
+      row.innerHTML = html;
+    })
+    .catch(function () { /* keep static fallback cards */ });
+})();
+</script>
+
+  <section class="projects" id="blogs">
+    <div class="proj-head">
+      <h2>Latest Blogs</h2>
+      <div class="proj-nav">
+        <a class="mbtn" href="https://medium.com/@skv.index" target="_blank" rel="noopener" aria-label="Medium profile">M</a>
+        <button id="blogPrev" aria-label="Scroll blogs left">‹</button>
+        <button id="blogNext" aria-label="Scroll blogs right">›</button>
+      </div>
+    </div>
+    <div class="proj-row" id="blogRow">
+      <a class="pcard" href="https://medium.com/@skv.index/5-things-i-wish-more-people-understood-about-ai-dd7deb05941a" target="_blank" rel="noopener">
+        <div class="pcover" style="background-image:url('https://cdn-images-1.medium.com/max/1024/1*AyQI_SQ3w3Z_m3oF_Yy9ZQ.png')"><span class="cat">AI</span><span class="go">↗</span></div>
+        <div class="pbody"><h3>5 Things I Wish More People Understood About AI</h3><div class="pmeta">Oct 2026 · 5 min read</div></div>
+      </a>
+      <a class="pcard more" href="https://medium.com/@skv.index" target="_blank" rel="noopener">
+        <span class="arr">→</span>
+        More on Medium
+        <span>Read all stories</span>
+      </a>
+    </div>
+  </section>
+<script>
+(function () {
+  var row = document.getElementById('blogRow');
+  document.getElementById('blogPrev').addEventListener('click', function () { row.scrollBy({ left: -340, behavior: 'smooth' }); });
+  document.getElementById('blogNext').addEventListener('click', function () { row.scrollBy({ left: 340, behavior: 'smooth' }); });
+
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function strip(html) { var d = document.createElement('div'); d.innerHTML = html; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
+
+  function cardHTML(title, link, when, mins, cat, cover) {
+    var cov = cover ? ' style="background-image:url(\'' + esc(cover) + '\')"' : '';
+    return '<a class="pcard" href="' + esc(link) + '" target="_blank" rel="noopener">' +
+      '<div class="pcover"' + cov + '><span class="cat">' + esc(cat) + '</span><span class="go">↗</span></div>' +
+      '<div class="pbody"><h3>' + esc(title) + '</h3>' +
+      '<div class="pmeta">' + esc(when) + ' · ' + mins + ' min read</div></div></a>';
+  }
+  function moreHTML() {
+    return '<a class="pcard more" href="https://medium.com/@skv.index" target="_blank" rel="noopener">' +
+      '<span class="arr">→</span>More on Medium<span>Read all stories</span></a>';
+  }
+  function fmtDate(s) {
+    try { return new Date(s).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }); } catch (e) { return ''; }
+  }
+  function readMins(text) { return Math.max(1, Math.round(text.split(' ').length / 200)); }
+
+  function renderRSS(xmlText) {
+    var xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+    var nodes = xml.getElementsByTagName('item');
+    if (!nodes.length) return false;
+    var html = '';
+    for (var i = 0; i < Math.min(nodes.length, 5); i++) {
+      var it = nodes[i];
+      var txt = function (t) { var n = it.getElementsByTagName(t)[0]; return n ? n.textContent : ''; };
+      var content = txt('content:encoded') || txt('description');
+      var clean = strip(content);
+      var img = (content.match(/<img[^>]+src="([^"]+)"/) || [])[1] || '';
+      if (/stat\?event=/.test(img)) img = '';
+      var cats = it.getElementsByTagName('category');
+      var catRaw = cats.length ? cats[0].textContent : 'Blog';
+      var cat = catRaw.charAt(0).toUpperCase() + catRaw.slice(1);
+      html += cardHTML(txt('title'), txt('link'), fmtDate(txt('pubDate')), readMins(clean), cat, img);
+    }
+    row.innerHTML = html + moreHTML();
+    return true;
+  }
+
+  function fetchRSS(tries) {
+    fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://medium.com/feed/@skv.index'))
+    .then(function (r) { if (!r.ok) throw new Error('proxy ' + r.status); return r.text(); })
+    .then(function (t) { if (!renderRSS(t)) throw new Error('empty'); })
+    .catch(function () {
+      if (tries > 0) { setTimeout(function () { fetchRSS(tries - 1); }, 2500); }
+      else { fetchJSON(1); }
+    });
+  }
+  function fetchJSON(tries) {
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://medium.com/feed/@skv.index'))
+    .then(function (r) { if (!r.ok) throw new Error('rss ' + r.status); return r.json(); })
+    .then(function (data) {
+      var items = (data.items || []).slice(0, 5);
+      if (!items.length) throw new Error('empty');
+      var html = items.map(function (it) {
+        var words = strip(it.description).split(' ').length;
+        var mins = Math.max(1, Math.round(words / 200));
+        var cat = (it.categories && it.categories.length) ? it.categories[0] : 'Blog';
+        var cover = it.thumbnail ? ' style="background-image:url(\'' + esc(it.thumbnail) + '\')"' : '';
+        return '<a class="pcard" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
+          '<div class="pcover"' + cover + '><span class="cat">' + esc(cat) + '</span><span class="go">↗</span></div>' +
+          '<div class="pbody"><h3>' + esc(it.title) + '</h3>' +
+          '<div class="pmeta">' + esc(fmtDate(it.pubDate)) + ' · ' + mins + ' min read</div></div></a>';
+      }).join('');
+      row.innerHTML = html + moreHTML();
+    })
+    .catch(function () {
+      if (tries > 0) { setTimeout(function () { fetchJSON(tries - 1); }, 2500); }
+      /* else keep static fallback card */
+    });
+  }
+  fetchRSS(1);
+})();
+</script>
+
+  <footer class="contact" id="contact">
+    <span class="eyebrow">Contact</span>
+    <h2>Let&rsquo;s work together.</h2>
+    <p class="csub">Open to internships, collaboration, and interesting projects. My inbox is always open — I&rsquo;ll get back within a day.</p>
+    <div class="cbtns">
+      <a class="btn-light" href="mailto:skv.index@gmail.com">Say Hello ✉</a>
+      <a class="btn-line" href="tel:+916374203902">Call Me ☎</a>
+    </div>
+    <div class="ctouch">
+      <a href="mailto:skv.index@gmail.com"><span class="ic">@</span>skv.index@gmail.com</a>
+      <a href="tel:+916374203902"><span class="ic">☎</span>63742 03902</a>
+      <a href="tel:+919385466240"><span class="ic">☎</span>93854 66240</a>
+      <a href="https://github.com/skv-index" target="_blank" rel="noopener"><span class="ic">GH</span>GitHub</a>
+      <a href="https://medium.com/@skv.index" target="_blank" rel="noopener"><span class="ic">M</span>Medium</a>
+      <a href="https://www.instagram.com/skv.index/" target="_blank" rel="noopener"><span class="ic">◈</span>Instagram</a>
+      <a href="https://www.youtube.com/@SKV-index" target="_blank" rel="noopener"><span class="ic">▶</span>YouTube</a>
+    </div>
+    <div class="copy">© 2026 Vignesh S K</div>
+  </footer>
+<script>
+(function () {
+  var nav = document.querySelector('.nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 12); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</div>
+</body>
+</html>
